@@ -29,7 +29,7 @@ module.exports = function (app) {
         });
     });
 
-    // Get rotue for retrieving a single history
+    // Get route for retrieving a single history
     app.get("/api/history/:id", function (req, res) {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
@@ -45,10 +45,14 @@ module.exports = function (app) {
     });
 
     // POST route for saving a new post
-    app.post("/api/history", function (req, res) {
-        db.history.create(req.body).then(function (dbhistory) {
-            res.json(dbhistory);
-        });
+    app.post("/api/history/:minerid?", function (req, res) {
+        console.log(req.body);
+        for (i = 0; i < req.body.data.length; i++) {
+            var data = req.body.data[i];
+            db.history.create(data).then(function (dbhistory) {
+                res.json(dbhistory);
+            });
+        }
     });
 
     // // DELETE route for deleting history

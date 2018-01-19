@@ -33,15 +33,15 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
-    history.associate = function (models) {
-        // We're saying that a history should belong to a Miner
-        // A history can't be created without a Miner due to the foreign key constraint
-        history.belongsTo(models.Miner, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // history.associate = function (models) {
+    //     // We're saying that a history should belong to a Miner
+    //     // A history can't be created without a Miner due to the foreign key constraint
+    //     history.belongsTo(models.Miner, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return history;
 };
