@@ -9,12 +9,14 @@ module.exports = function(app) {
   //in each of the below cases the user is shown an html content.
   //home page path function
   app.get("/", function(req, res){
-      res.sendFile(path.join(__dirname ,"../public/home.html"));
+      res.render("index",{
+        title: "title"
+      });
   });
   //each app.get is to send to another path
-  app.get("/survey", function(req, res) {
-      res.sendFile(path.join(__dirname,"../public/survey.html"));
-  });
+  // app.get("/", function(req, res) {
+  //     res.sendFile());
+  // });
   // If no matching route is found default to home
   // app.get("*", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/home.html"));
