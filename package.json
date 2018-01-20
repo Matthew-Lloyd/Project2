@@ -22,5 +22,6 @@
     "express": "^4.16.2",
     "mysql2": "^1.5.1",
     "sequelize": "^4.31.2"
-  }
+  },
+  "devDependencies": {}
 }
