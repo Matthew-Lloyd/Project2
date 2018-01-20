@@ -5,31 +5,31 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         reportedHashrate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT(100),
             allowNull: false
         },
         currentHashrate: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(20, 20),
             allowNull: false
         },
         validShares: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT(100),
             allowNull: false
         },
         invalidShares: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT(100),
             allowNull: false
         },
         staleShares: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT(100),
             allowNull: false
         },
         averageHashrate: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(20, 20),
             allowNull: false
         },
         activeWorkers: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT(100),
             allowNull: false
         }
     });
