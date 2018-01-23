@@ -4,13 +4,13 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING
     });
 
-    Miner.associate = function (models) {
-        // Associating Miner with history
-        // When an Miner is deleted, also delete any associated history
-        Miner.hasMany(models.history, {
-            onDelete: "cascade"
-        });
-    };
+    // Miner.associate = function (models) {
+    //     // Associating Miner with history
+    //     // When an Miner is deleted, also delete any associated history
+    //     Miner.hasMany(models.history, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     return Miner;
 };
