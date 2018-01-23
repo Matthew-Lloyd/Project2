@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Miner Search</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">The Miners</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Miner</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center enter_section">
+			<form method="POST">
+				<input type="text" class="form-control" name="miner_search" value="" id="search_miner">
+				<button type="submit" class="btn-primary" id="find-miner">Submit</button>
+			</form>
+			<p>Enter a miner ID and click the "Submit" button.</p>
+		</div>
+	</div>
+</div>
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+  <script type="text/javascript"> 
+
+  	 // This function handles events where one button is clicked
+      $("#find-miner").on("click", function(event) {
+        event.preventDefault();
+
+        // This line grabs the input from the textbox
+        var miner = $("#search_miner").val().trim();
+
+        var queryURL1 = "https://api.ethermine.org/poolStats";
+        
+
+        $("#search_miner").val("");
+
+        if(Submit === "") {
+          return false;
+        }
+
+
+        $.ajax({
+        url: queryURL1,
+        method: "GET"
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(response) {
+      	console.log(response);
+     
+      })
+
+
+    });
+
+
+
+
+ </script>
+</body>
+</html>
