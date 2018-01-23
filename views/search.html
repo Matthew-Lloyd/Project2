@@ -34,44 +34,5 @@
 	</div>
 </div>
 
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
-  <script type="text/javascript"> 
-
-  	 // This function handles events where one button is clicked
-      $("#find-miner").on("click", function(event) {
-        event.preventDefault();
-
-        // This line grabs the input from the textbox
-        var miner = $("#search_miner").val().trim();
-
-        var queryURL1 = "https://api.ethermine.org/poolStats";
-        
-
-        $("#search_miner").val("");
-
-        if(Submit === "") {
-          return false;
-        }
-
-
-        $.ajax({
-        url: queryURL1,
-        method: "GET"
-      })
-      // We store all of the retrieved data inside of an object called "response"
-      .done(function(response) {
-      	console.log(response);
-     
-      })
-
-
-    });
-
-
-
-
- </script>
 </body>
 </html>
