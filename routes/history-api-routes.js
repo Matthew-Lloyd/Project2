@@ -22,8 +22,9 @@ module.exports = function (app) {
         // We set the value to an array of the models we want to include in a left outer join
         // In this case, just db.Miner
         db.history.findAll({
-            where: query,
-            include: [db.Miner]
+            where: query
+            // ,
+            // include: [db.Miner]
         }).then(function (dbhistory) {
             res.json(dbhistory);
         });
