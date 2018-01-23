@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test Graph</title>
+
+  <!-- 
+{{! var plotly = require('plotly')('tmac4403','98l7dFUfZ46ibY0751ke');
+ 
+var data = [{x:[], y:[], stream:{token:'4ab3gxtapz', maxpoints:200}}];
+var graphOptions = {fileopt : "extend", filename : "nodenodenode"};
+ 
+plotly.plot(data,graphOptions,function() {
+  var stream = plotly.stream('4ab3gxtapz', function (res) {
+    console.log(res);
+  });
+  someReadableStream.pipe(stream);
+}); }}  -->
+
+
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+</head>
+
+<body>
+
+  <div id="myDiv">
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+<script>
+  // var paramminername = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+  var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    .done(function(response) {
+      var data = [
+      {
+        type: "scatter",
+        mode: "lines",
+        x: ["reportedHashrate"],
+        y: ["time"],
+        
+      }
+    ];
+    console.log(response);
+   
+      var results = response.data;
+      Plotly.newPlot('myDiv', results);
+    });
+    </script>
+</body>
+</html>
