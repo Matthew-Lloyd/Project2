@@ -26,9 +26,17 @@ module.exports = function (app) {
         });
     });
 
-    app.post("/api/miner", function (req, res) {
-        db.Miner.create(req.body).then(function (dbMiner) {
-            res.json(dbMiner);
+    app.post("/api/Pool", function (req, res) {
+        poolStats = req.body.data;
+        // console.log(poolStats.data.minedBlocks[0].miner);
+        for (i = 0; i < poolStats.minedBlocks.length; i++) {
+            poolStats.topMiners.push(poolStats.minedBlocks[i].miner);
+        }
+        console.log(poolStats.topMiners);
+        console.log(poolStats.poolStats);
+        console.log(poolStats.price);
+        db.Pool.create(poolStats.poolStats, poolStats.price.usd, poolStats.price.btc).then(function (dbPool) {
+            res.json(dbPool);
         });
     });
 };

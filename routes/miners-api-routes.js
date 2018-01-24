@@ -12,48 +12,48 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
 
-    // GET route for getting all of the history
-    app.get("/api/history", function (req, res) {
+    // GET route for getting all of the miners
+    app.get("/api/miners", function (req, res) {
         var query = {};
-        if (req.query.name) {
-            query.MinerName = req.query.name;
+        if (req.query.pool_id) {
+            query.PoolId = req.query.pool_id;
         }
         // Here we add an "include" property to our options in our findAll query
         // We set the value to an array of the models we want to include in a left outer join
         // In this case, just db.Miner
-        db.history.findAll({
+        db.topMiners.findAll({
             where: query
-            // ,
-            // include: [db.Miner]
-        }).then(function (dbhistory) {
-            res.json(dbhistory);
+            ,
+            include: [db.Pool]
+        }).then(function (dbtopMiner) {
+            res.json(dbtopMiner);
         });
     });
 
     // Get route for retrieving a single history
-    app.get("/api/history/:id", function (req, res) {
+    app.get("/api/Pool/:id", function (req, res) {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
         // In this case, just db.Miner
-        db.history.findOne({
+        db.Pool.findOne({
             where: {
                 id: req.params.id
             },
             include: [db.Miner]
-        }).then(function (dbhistory) {
-            res.json(dbhistory);
+        }).then(function (dbPool) {
+            res.json(dbPool);
         });
     });
 
     // POST route for saving a new post
-    app.post("/api/history/:minerid?", function (req, res) {
-        console.log(req.body);
-        for (i = 0; i < req.body.data.length; i++) {
-            var data = req.body.data[i];
-            db.history.create(data).then(function (dbhistory) {
-                res.json(dbhistory);
-            });
-        }
+    app.post("/api/miners/", function (req, res) {
+        
+        // for (i = 0; i < req.body.data.length; i++) {
+        //     var data = req.body.data[i];
+        //     db.history.create(data).then(function (dbhistory) {
+        //         res.json(dbhistory);
+        //     });
+        // }
     });
 
     // // DELETE route for deleting history
