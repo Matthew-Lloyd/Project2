@@ -3,30 +3,27 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <link rel="stylesheet" href="./assets/css/_style.css">
+ <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{{!-- beginning of nav bar --}}
+<nav class="navbar navbar-light" style="background-color: #78bef0;">
+    <!-- Navbar content -->
 
- 
- <div id="wrapper">
-     {{!-- nav bar goes here --}}
-    <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Miners heaven</a>
-                <a id="history-button" href="/history"><button type="button" class="btn btn-primary">History page</button></a>
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/history" style="background-color:rgb(8, 8, 8);">History</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        
     </div>
-    {{!-- nav bar goes here --}}
-
+</nav>
+ <div id="wrapper">  
      
     <div class="row container-fluid">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
     </div>
-            <!-- /.row -->
 
         <div class="row container-fluid">
                 <div class="col-lg-2 col-md-4">
@@ -140,7 +137,7 @@
                     </div>
                 </div>
                  <div class="col-lg-2 col-md-4">
-                    <div class="panel panel-warning">
+                    <div class="panel" id="last-box">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-2">
@@ -162,7 +159,6 @@
                     </div>
                 </div>
         </div>
-</div>
     <!-- /#wrapper -->
 <div class="row container-fluid">
     <div class="col-lg-8">
@@ -178,5 +174,7 @@
             <h2>Top miners</h2>
         <div></div>
     </div>
-</div>    
+</div>  
+</div>
+
 
