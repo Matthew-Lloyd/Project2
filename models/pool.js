@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Pool = sequelize.define("Pool", {
         hashRate: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(20, 20),
             allowNull: false,
         },
         miners: {
