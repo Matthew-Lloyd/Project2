@@ -40,24 +40,35 @@ plotly.plot(data,graphOptions,function() {
   })
     .done(function(response) {
     
-for (var i=0; i<10; i++) {
+for (var i=0; i<50; i++) {
      
-      console.log(data);
+      // console.log(data);
       var xArray = [];
       var yArray = [];
-      xArray.push(response.data[i].currentHashrate);
-      yArray.push(response.data[i].time);
+      var time = new Date(response.data[i].time*1000);
+      console.log(time);
+      yArray.push(response.data[i].currentHashrate/1000000);
+      // xArray.push(response.data[i].currentHashrate);
+
+      // xArray.push(time);
+      console.log(yArray);
+
+      // var time2 = new Date(1516737600);
+      // time2.toString("MMM dd"); 
+      // console.log(time2);
     };
+
      var data = [
       {
         type: "scatter",
-        mode: "lines",
+        // mode: "lines",
         x: xArray,
         y: yArray,
         
       }];
+      // console.log(xArray);
        console.log(response.data);
-   
+      //  console.log(time);
       Plotly.newPlot('myDiv', data);
     });
     </script>
