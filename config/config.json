@@ -2,7 +2,6 @@
   "development": {
     "username": "root",
     "password": "MyNewPass",
-
     "database": "ore",
     "host": "127.0.0.1",
     "dialect": "mysql"
