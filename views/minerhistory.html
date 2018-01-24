@@ -32,6 +32,7 @@ plotly.plot(data,graphOptions,function() {
   </div>
 <script>
   // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+  var moment = require('moment'); //including moment.js in this script (questionable)
   var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
 
   $.ajax({
@@ -47,8 +48,10 @@ for (var i=0; i<10; i++) {
       var yArray = [];
       var hashrate = response.data[i].currentHashrate;
       var currenthashrate = hashrate.numtoExponential();
+      var date = response.data[i].time;
+      var time = moment.unix(date).format("MM/DD/YYYY");
       xArray.push(currenthashrate);
-      yArray.push(response.data[i].time);
+      yArray.push(time);
     };
      var data = [
       {
