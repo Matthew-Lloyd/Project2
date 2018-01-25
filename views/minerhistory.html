@@ -41,6 +41,7 @@ plotly.plot(data,graphOptions,function() {
       .done(function (response) {
         var xArray = [];
         var yArray = [];
+        
         for (var i = 0; i < 100; i++) {
 
           // console.log(data);
@@ -58,20 +59,34 @@ plotly.plot(data,graphOptions,function() {
           // time2.toString("MMM dd"); 
           // console.log(time2);
         };
-
+        var graphOptions = {
+          "title": "CURRENT HASHRATE",
+          "xaxis": { 
+            "title": "A SLICE OF TIME"
+          },
+          "yaxis": { 
+            "title": "HASHRATE"
+          }
+        };
         var data = [
           {
 
             // type: "scatter",
             // mode: "lines",
+            
             x: xArray,
+            
             y: yArray,
 
+
           }];
+
+
+
         // console.log(xArray);
         console.log(response.data);
         //  console.log(time);
-        Plotly.newPlot('myDiv', data);
+        Plotly.newPlot('myDiv', data, graphOptions);
       });
   </script>
 </body>
