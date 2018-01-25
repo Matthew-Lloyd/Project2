@@ -18,7 +18,6 @@ plotly.plot(data,graphOptions,function() {
   someReadableStream.pipe(stream);
 }); }}  -->
 
-
   <!-- Plotly.js -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,48 +29,66 @@ plotly.plot(data,graphOptions,function() {
   <div id="myDiv">
     <!-- Plotly chart will be drawn inside this DIV -->
   </div>
-<script>
-  // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
-  // var moment = require('moment'); //including moment.js in this script (questionable)
-  var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+  <script>
+    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+    // var moment = require('moment'); //including moment.js in this script (questionable)
+    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-    .done(function(response) {
-    
-for (var i=0; i<50; i++) {
-     
-      // console.log(data);
-      var xArray = [];
-      var yArray = [];
-      var time = new Date(response.data[i].time*1000);
-      console.log(time);
-      yArray.push(response.data[i].currentHashrate/1000000);
-      xArray.push(response.data[i].currentHashrate);
-
-      xArray.push(time);
-      console.log(yArray);
-
-      // var time2 = new Date(1516737600);
-      // time2.toString("MMM dd"); 
-      // console.log(time2);
-    };
-
-     var data = [
-      {
-        type: "scatter",
-        // mode: "lines",
-        x: xArray,
-        y: yArray,
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .done(function (response) {
+        var xArray = [];
+        var yArray = [];
         
-      }];
-      // console.log(xArray);
-       console.log(response.data);
-      //  console.log(time);
-      Plotly.newPlot('myDiv', data);
-    });
-    </script>
+        for (var i = 0; i < 100; i++) {
+
+          // console.log(data);
+         
+          var time = new Date(response.data[i].time * 1000);
+          console.log(time);
+          yArray.push(response.data[i].currentHashrate / 1000000);
+          // xArray.push(time);
+
+          xArray.push(time);
+          console.log(xArray);
+          console.log(yArray);
+
+          // var time2 = new Date(1516737600);
+          // time2.toString("MMM dd"); 
+          // console.log(time2);
+        };
+        var graphOptions = {
+          "title": "CURRENT HASHRATE",
+          "xaxis": { 
+            "title": "A SLICE OF TIME"
+          },
+          "yaxis": { 
+            "title": "HASHRATE"
+          }
+        };
+        var data = [
+          {
+
+            // type: "scatter",
+            // mode: "lines",
+            
+            x: xArray,
+            
+            y: yArray,
+
+
+          }];
+
+
+
+        // console.log(xArray);
+        console.log(response.data);
+        //  console.log(time);
+        Plotly.newPlot('myDiv', data, graphOptions);
+      });
+  </script>
 </body>
+
 </html>
