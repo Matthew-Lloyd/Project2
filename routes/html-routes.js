@@ -21,6 +21,11 @@ module.exports = function(app) {
     res.render("history",{
       title: "title"
     });
+  });
+  app.get("/developers", function(req, res){
+    res.render("developers",{
+      title: "title"
+    });
 });
   // If no matching route is found default to home
   // app.get("*", function(req, res) {
