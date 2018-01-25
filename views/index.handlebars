@@ -6,14 +6,21 @@
  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"src="js/home.js"></script>
 {{!-- beginning of nav bar --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <nav class="navbar navbar-light" style="background-color: #78bef0;">
     <!-- Navbar content -->
 
     <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/history" style="background-color:rgb(8, 8, 8);">History</a>
+        <a class="navbar-brand" href="/" style="background-color:rgb(8, 8, 8);">Home</a>
+        <a class="navbar-brand" href="/history" style="background-color:rgb(8, 8, 8);">History</a>
+        <a class="navbar-brand" href="/developers" style="background-color:rgb(8, 8, 8);">Developers</a>
+
     <div class="collapse navbar-collapse" id="navbarText">
+
         
     </div>
 </nav>
@@ -21,7 +28,7 @@
      
     <div class="row container-fluid">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Home</h1>
         </div>
     </div>
 
@@ -34,14 +41,15 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div id="word">Hash Rate</div>
+                                    <div class="huge"><br></div>
+                    
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <div class="text-right" id="hash-rate"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -56,14 +64,15 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div id="word">Active Miners</div>
+                                    <div class="huge"><br></div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <div id="active-miners" class="pull-right" class="pull-left"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -75,18 +84,18 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-2">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div id="word">Active Miners</div>
+                                    <div class="huge"><br></div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div id="active-workers" class="pull-right" class="pull-left"></div>                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -100,43 +109,42 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
+                                    <div id="word">Block/ Hours</div>
+                                    <div class="huge"><br></div>
+                                  
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div id="blocks" class="pull-right" class="pull-left"></div>                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
                  <div class="col-lg-2 col-md-4">
-                    <div class="panel panel-primary">
+                    <div class="panel" id="second">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-2">
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div id="word">Mined Block</div>
+                                    <div class="huge"><br></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+                                <span class="pull-left"></span>
+                                <div id="last" class="pull-right" class="pull-left"></div>                                <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
-                 <div class="col-lg-2 col-md-4">
+                  <div class="col-lg-2 col-md-4">
                     <div class="panel" id="last-box">
                         <div class="panel-heading">
                             <div class="row">
@@ -144,37 +152,190 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div id="word">Price</div>
+                                    <div class="huge"><br></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"></span>
+                                <div id="price" class="pull-right" class="pull-left"></div>                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    <!-- /#wrapper -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+                    <div class="panel" id="last-box">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id="price"class="huge"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div id="top-miners"><span class="pull-left"></span></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
-                </div>
         </div>
     <!-- /#wrapper -->
 <div class="row container-fluid">
     <div class="col-lg-8">
         <div class="panel panel-primary">
             <div id="graph">
-                <h2>Graph goes here</h2>
-            </div>
+                <script>
+   //graph from branch Jonathan
+   // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+   // var moment = require('moment'); //including moJment.js in this script (questionable)
+   var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
 
+   $.ajax({
+     url: queryURL,
+     method: "GET"
+   })
+     .done(function (response) {
+       console.log(response);
+       var xArray = [];
+       var yArray = [];
+       var yArray2 = [];
+       var yArray3 = [];
+       for (var i = 0; i < 100; i++) {
+
+         // console.log(data);
+        
+         var time = new Date(response.data[i].time * 1000);
+         console.log(time);
+         yArray.push(response.data[i].currentHashrate / 1000000);
+         // xArray.push(time);
+         xArray.push(time);
+         yArray2.push(response.data[i].averageHashrate / 1000000);
+         yArray3.push(response.data[i].reportedHashrate / 1000000);
+         console.log(xArray);
+         console.log(yArray);
+         console.log(yArray2);
+         console.log(yArray3);
+         // var time2 = new Date(1516737600);
+         // time2.toString("MMM dd"); 
+         // console.log(time2);
+       };
+       var trace1 = {
+         x: xArray,
+         y: yArray,
+         name: 'current'
+       }
+
+       var trace2 = {
+         x: xArray,
+         y: yArray2,
+         name: 'average'
+       }
+
+       var trace3 = {
+         x: xArray,
+         y: yArray3,
+         name: 'recorded'
+       }
+
+       var data = [
+         trace1, 
+         trace2, 
+         trace3,
+      ];
+
+       var layout = {
+         title: 'Line plot of hashrates',
+         paper_bgcolor: 'rgb(255, 223, 0)',
+         plot_bgcolor: 'rgb(255, 255, 255)',
+         xaxis: {
+           title: 'Date'
+         },
+         yaxis: {
+           title: 'Hashrate'
+         }
+       };
+      
+       // console.log(xArray);
+       console.log(response.data);
+       //  console.log(time);
+       Plotly.newPlot('graph', data, layout);
+     });
+     //graph from branch Tim
+  /*<script>
+    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+    // var moment = require('moment'); //including moment.js in this script (questionable)
+    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .done(function (response) {
+        var xArray = [];
+        var yArray = [];
+        
+        for (var i = 0; i < 100; i++) {
+
+          // console.log(data);
+         
+          var time = new Date(response.data[i].time * 1000);
+          console.log(time);
+          yArray.push(response.data[i].currentHashrate / 1000000);
+          // xArray.push(time);
+
+          xArray.push(time);
+          console.log(xArray);
+          console.log(yArray);
+
+          // var time2 = new Date(1516737600);
+          // time2.toString("MMM dd"); 
+          // console.log(time2);
+        };
+        var graphOptions = {
+          "title": "CURRENT HASHRATE",
+          "xaxis": { 
+            "title": "A SLICE OF TIME"
+          },
+          "yaxis": { 
+            "title": "HASHRATE"
+          }
+        };
+        var data = [
+          {
+
+            // type: "scatter",
+            // mode: "lines",
+            
+            x: xArray,
+            
+            y: yArray,
+
+
+             }];
+             
+
+
+        // console.log(xArray);
+        console.log(response.data);
+        //  console.log(time);
+        Plotly.newPlot('myDiv', data, graphOptions);
+        */
+  </script>
+            </div>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="panel panel-primary">
-            <h2>Top miners</h2>
-        <div></div>
-    </div>
-</div>  
 </div>
+     
 
 

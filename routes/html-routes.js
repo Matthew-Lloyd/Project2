@@ -21,7 +21,19 @@ module.exports = function(app) {
     res.render("history",{
       title: "title"
     });
+  });
+  app.get("/developers", function(req, res){
+    res.render("developers",{
+      title: "title"
+    });
 });
+
+// testing graph route
+  app.get("/minerhistory", function(req, res) {
+     res.sendFile(path.join(__dirname, "../views/minerhistory.html"));
+   });
+
+
   // If no matching route is found default to home
   // app.get("*", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/home.html"));

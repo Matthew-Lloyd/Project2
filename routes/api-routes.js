@@ -27,16 +27,25 @@ module.exports = function (app) {
     });
 
     app.post("/api/Pool", function (req, res) {
-        poolStats = req.body.data;
+        poolStats = req.body.data.poolStats;
+        price = req.body.data.price;
         // console.log(poolStats.data.minedBlocks[0].miner);
-        for (i = 0; i < poolStats.minedBlocks.length; i++) {
-            poolStats.topMiners.push(poolStats.minedBlocks[i].miner);
-        }
-        console.log(poolStats.topMiners);
-        console.log(poolStats.poolStats);
-        console.log(poolStats.price);
-        db.Pool.create(poolStats.poolStats, poolStats.price.usd, poolStats.price.btc).then(function (dbPool) {
+        // for (i = 0; i < poolStats.minedBlocks.length; i++) {
+        //     poolStats.topMiners.push(poolStats.minedBlocks[i].miner);
+        // }
+        var poolObj = {
+            hashRate: poolStats.hashRate,
+            miners: poolStats.miners,
+            workers: poolStats.workers,
+            blocksPerHour: poolStats.blocksPerHour,
+            usd: price.usd,
+            btc: price.btc,
+        };
+        
+        // console.log(poolStats.topMiners);
+        // console.log(poolStats.poolStats);
+        db.Pool.create(poolObj).then(function (dbPool) {
             res.json(dbPool);
         });
     });
-};
+};  
