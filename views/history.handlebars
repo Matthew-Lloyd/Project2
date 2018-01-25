@@ -3,30 +3,21 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <link rel="stylesheet" href="./assets/css/_style.css">
- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- Bootstrap Js CDN -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{{!-- beginning of nav bar --}}
-<nav class="navbar navbar-light" style="background-color: #78bef0;">
-    <!-- Navbar content -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript"src="js/history.js"></script>
 
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/history" style="background-color:rgb(8, 8, 8);">History</a>
-    <div class="collapse navbar-collapse" id="navbarText">
-        
-    </div>
-</nav>
- <div id="wrapper">  
-     
-    <div class="row container-fluid">
-        <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+<div class="wrapper">
+    <div class="col-lg-12">
+        <div class="jumbotron">
+                <h1 class="page-header">History</h1>
+                <a id="history-button" href="/"><button type="button" class="btn btn-primary">Home</button></a>
         </div>
+                <!-- /.col-lg-12 -->  
     </div>
+            <!-- /.row -->
 
         <div class="row container-fluid">
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <div class="panel panel-warning">
                         <div class="panel-heading">
                             <div class="row">
@@ -48,7 +39,7 @@
                         </a>
                     </div>
                 </div>
-                 <div class="col-lg-2 col-md-4">
+                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <div class="row">
@@ -70,7 +61,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <div class="panel panel-danger">
                         <div class="panel-heading">
                             <div class="row">
@@ -92,7 +83,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="row">
@@ -114,67 +105,14 @@
                         </a>
                     </div>
                 </div>
-                 <div class="col-lg-2 col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-lg-2 col-md-4">
-                    <div class="panel" id="last-box">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-2">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
+                {{!-- graph goes here --}}
+        <div class="row container-fluid">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div id="graph">
+                        <h2 class="text-center">Graph goes here</h2>
                     </div>
                 </div>
         </div>
-    <!-- /#wrapper -->
-<div class="row container-fluid">
-    <div class="col-lg-8">
-        <div class="panel panel-primary">
-            <div id="graph">
-                <h2>Graph goes here</h2>
-            </div>
 
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="panel panel-primary">
-            <h2>Top miners</h2>
-        <div></div>
-    </div>
-</div>  
 </div>
-
-

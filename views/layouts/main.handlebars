@@ -1,16 +1,36 @@
+<!--Jon's test change -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+        {{!-- bootstrap  --}}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>main</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
-
+    <script type=”text/x-handlebars-template” id=”template-name”></script>
+    <link rel="stylesheet" href="./assets/css/_style.css">
 </head>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
 
 <body>
     {{{ body }}}
+
+    <script src="js/view.js" type="text/javascript"></script>
 </body>
 
 </html>
