@@ -8,8 +8,12 @@ $(document).ready(function() {
         url: queryURL,
         method: 'GET'
         }).done(function(response) {
-            console.log(response)
-            });
-
+          for(var i = 0; i< response.data.length; i++){
+            $("#graph").append("\n" + response.data[i].time);
+            console.log(response.data[i].activeWorkers)
+            $("#active-workers").append(response.data[i].activeWorkers)
+          };
+        //  $("#").append()   
+        });
     }
 });
