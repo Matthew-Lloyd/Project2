@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="./assets/css/_style.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript"src="js/history.js"></script>
-
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="wrapper">
     <div class="col-lg-12">
         <div class="jumbotron">
@@ -110,9 +111,144 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div id="graph">
-                        <h2 class="text-center">Graph goes here</h2>
+                        <script>
+   //graph from branch Jonathan
+   // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+   // var moment = require('moment'); //including moJment.js in this script (questionable)
+   var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+
+   $.ajax({
+     url: queryURL,
+     method: "GET"
+   })
+     .done(function (response) {
+       console.log(response);
+       var xArray = [];
+       var yArray = [];
+       var yArray2 = [];
+       var yArray3 = [];
+       for (var i = 0; i < 100; i++) {
+
+         // console.log(data);
+        
+         var time = new Date(response.data[i].time * 1000);
+         console.log(time);
+         yArray.push(response.data[i].currentHashrate / 1000000);
+         // xArray.push(time);
+         xArray.push(time);
+         yArray2.push(response.data[i].averageHashrate / 1000000);
+         yArray3.push(response.data[i].reportedHashrate / 1000000);
+         console.log(xArray);
+         console.log(yArray);
+         console.log(yArray2);
+         console.log(yArray3);
+         // var time2 = new Date(1516737600);
+         // time2.toString("MMM dd"); 
+         // console.log(time2);
+       };
+       var trace1 = {
+         x: xArray,
+         y: yArray,
+         name: 'current'
+       }
+
+       var trace2 = {
+         x: xArray,
+         y: yArray2,
+         name: 'average'
+       }
+
+       var trace3 = {
+         x: xArray,
+         y: yArray3,
+         name: 'recorded'
+       }
+
+       var data = [
+         trace1, 
+         trace2, 
+         trace3,
+      ];
+
+       var layout = {
+         title: 'Line plot of hashrates',
+         paper_bgcolor: 'rgb(255, 223, 0)',
+         plot_bgcolor: 'rgb(255, 255, 255)',
+         xaxis: {
+           title: 'Date'
+         },
+         yaxis: {
+           title: 'Hashrate'
+         }
+       };
+      
+       // console.log(xArray);
+       console.log(response.data);
+       //  console.log(time);
+       Plotly.newPlot('graph', data, layout);
+     });
+     //graph from branch Tim
+  /*<script>
+    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+    // var moment = require('moment'); //including moment.js in this script (questionable)
+    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .done(function (response) {
+        var xArray = [];
+        var yArray = [];
+        
+        for (var i = 0; i < 100; i++) {
+
+          // console.log(data);
+         
+          var time = new Date(response.data[i].time * 1000);
+          console.log(time);
+          yArray.push(response.data[i].currentHashrate / 1000000);
+          // xArray.push(time);
+
+          xArray.push(time);
+          console.log(xArray);
+          console.log(yArray);
+
+          // var time2 = new Date(1516737600);
+          // time2.toString("MMM dd"); 
+          // console.log(time2);
+        };
+        var graphOptions = {
+          "title": "CURRENT HASHRATE",
+          "xaxis": { 
+            "title": "A SLICE OF TIME"
+          },
+          "yaxis": { 
+            "title": "HASHRATE"
+          }
+        };
+        var data = [
+          {
+
+            // type: "scatter",
+            // mode: "lines",
+            
+            x: xArray,
+            
+            y: yArray,
+
+
+             }];
+             
+
+
+        // console.log(xArray);
+        console.log(response.data);
+        //  console.log(time);
+        Plotly.newPlot('myDiv', data, graphOptions);
+        */
+  </script>
                     </div>
                 </div>
         </div>
-
 </div>
