@@ -2,15 +2,6 @@ $(document).ready(function() {
 
     // function databasePush() {
     // }
-    $("#minerHist").on("click", function () {
-        var minerId = "7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc";
-        // minerid = minerid.replace(/\s+/g, "").toLowerCase();
-        // run an AJAX GET-request for our servers api,
-        // including the user's character in the url
-        // $.get("/history/" + minerId, function (data) {
-        window.location = "/history/" + minerId;
-        // });
-    });
     window.onload = function() { 
         var miner = ""  
         var queryURL= "https://api.ethermine.org/poolStats";
@@ -28,27 +19,22 @@ $(document).ready(function() {
             $("#price").append("btc:฿" + response.data.price.btc +  " usd: $" + response.data.price.usd);
             $("#last").append(response.data.minedBlocks[0].number);
             $("#top-miners").append(response.data.minedBlocks[0].miners);
-
-            for(var i = 0; i< response.data.minedBlocks.length; i++){
-                    $("#top-miners").append(" miner: " + response.data.minedBlocks[i].miner  + "<br>")
-                    // console.log(response.data.minedBlocks[i])
-                }
-            // $.ajax({
-            //     url: "api/Pool",
-            //     method: "POST",
-            //     data: response
-            // });
-        });
-
-        for(var i = 0; i< response.data.minedBlocks.length; i++){
+            $.ajax({
+                url: "api/Pool",
+                method: "POST",
+                data: response
+            });
+            for (var i = 0; i < response.data.minedBlocks.length; i++) {
                 var minerbutton = $("<button>");
-                minerbutton.addClass("btn btn-danger");
+                minerbutton.addClass("btn btn-danger minerBtn");
                 minerbutton.attr("data-id", response.data.minedBlocks[i].miner);
+                minerbutton.css({ "background-color": "darkgrey", "shadow": "black" });
                 minerbutton.text(response.data.minedBlocks[i].miner);
                 // $("#top-miners").append(response.data.minedBlocks[i].miner + "<br>");
                 console.log(response.data.minedBlocks[i].miner);
                 $("#top-miners").append(minerbutton);
-
+            }
+        });
         $.ajax({
             method: "GET",
             url: "api/Pool"
@@ -57,9 +43,13 @@ $(document).ready(function() {
             // console.log("Pool History: " + response[i].id);
             }
         })
-        // .then(populate);  
-
-    }
+    };
+    $(document).on("click", '.minerBtn', function () {
+        var minerId = $(this).attr("data-id");
+        console.log(minerId)
+        localStorage.setItem("minerId", minerId);
+        window.location = "/history/" + minerId;
+    });    
    //graph from branch Jonathan
    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
    // var moment = require('moment'); //including moJment.js in this script (questionable)
@@ -123,5 +113,5 @@ $(document).ready(function() {
         //console.log(response.data);
         //console.log(time);
         Plotly.newPlot('graph', data, layout);
-    });    
+    });
 });
