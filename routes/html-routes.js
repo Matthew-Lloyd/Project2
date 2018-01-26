@@ -13,29 +13,40 @@ module.exports = function(app) {
         title: "title"
       });
   });
-  //each app.get is to send to another path
-  // app.get("/", function(req, res) {
-  //     res.sendFile());
-  // });
   app.get("/history", function(req, res){
     res.render("history",{
       title: "title"
     });
   });
+
   app.get("/developers", function(req, res){
     res.render("developers",{
       title: "title"
+    });    
+  });
+  //I dont know what this fucction does
+  app.get('/history/:minerId', function(req, res, next) {
+    var minerId = request.params.username;
+    findUserByUsername(username, function(error, user) {
+      if (error) return next(error);
+      return response.render('user', user);
     });
-});
-
-// testing graph route
-  app.get("/minerhistory", function(req, res) {
-     res.sendFile(path.join(__dirname, "../views/minerhistory.html"));
-   });
-
-
-  // If no matching route is found default to home
-  // app.get("*", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/home.html"));
+  });
+  
+  //getting route
+  // app.get("/history:minerid", function(req, res) {
+  //   var condition = "id = " + req.params.id;
+  
+  //   id.all(condition, function(result) {
+  //     if (result.affectedRows == 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     } else {
+  //       res.status(200).end();
+  //     }
+  //   });
   // });
-};
+
+};//ending of exports  
+
+

@@ -19,8 +19,14 @@ $(document).ready(function() {
         $("#top-miners").append(response.data.minedBlocks[0].miners);
 
         for(var i = 0; i< response.data.minedBlocks.length; i++){
-                $("#top-miners").append(" miner: " + response.data.minedBlocks[i].miner  + "<br>")
-                console.log(response.data.minedBlocks[i])
+                var minerbutton = $("<button>");
+                minerbutton.addClass("btn btn-danger");
+                minerbutton.attr("data-id", response.data.minedBlocks[i].miner);
+                minerbutton.text(response.data.minedBlocks[i].miner);
+                // $("#top-miners").append(response.data.minedBlocks[i].miner + "<br>");
+                console.log(response.data.minedBlocks[i].miner);
+                $("#top-miners").append(minerbutton);
+
             }
             
         });     
