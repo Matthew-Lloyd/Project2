@@ -1,3 +1,5 @@
+// const _ =  require('lodash');
+
 $(document).ready(function() {
 
     window.onload = function() { 
@@ -8,12 +10,14 @@ $(document).ready(function() {
         url: queryURL,
         method: 'GET'
         }).done(function(response) {
-          for(var i = 0; i< response.data.length; i++){
-            $("#graph").append("\n" + response.data[i].time);
-            console.log(response.data[i].activeWorkers)
-            $("#active-workers").append(response.data[i].activeWorkers)
-          };
+            $("#graph").append("\n" + response.data[143].activeWorkers);
+            $("#active-workers").append(response.data[143].activeWorkers);
+            $("#shares").append(response.data[143].validShares);
+            $("#hash-rates").append(response.data[143].averageHashrate);
+            $("#stale-shares").append(response.data[143].staleShares);
+            console.log(response.data[143]);
         //  $("#").append()   
         });
     }
+
 });
