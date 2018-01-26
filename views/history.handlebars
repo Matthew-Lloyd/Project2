@@ -33,7 +33,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                    <div id="hash-rates"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -49,13 +49,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"></div>
-                                    <div id="unpaid-balances">Unpaid Balances</div>
+                                    <div>stale shares</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <div id="stale-shares"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -77,7 +77,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <div id="active-workers"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -93,13 +93,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"></div>
-                                    <div id="shares">Shares</div>
+                                    <div>Valid Shares</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <div id="shares"></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -187,67 +187,6 @@
        //  console.log(time);
        Plotly.newPlot('graph', data, layout);
      });
-     //graph from branch Tim
-  /*<script>
-    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
-    // var moment = require('moment'); //including moment.js in this script (questionable)
-    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      .done(function (response) {
-        var xArray = [];
-        var yArray = [];
-        
-        for (var i = 0; i < 100; i++) {
-
-          // console.log(data);
-         
-          var time = new Date(response.data[i].time * 1000);
-          console.log(time);
-          yArray.push(response.data[i].currentHashrate / 1000000);
-          // xArray.push(time);
-
-          xArray.push(time);
-          console.log(xArray);
-          console.log(yArray);
-
-          // var time2 = new Date(1516737600);
-          // time2.toString("MMM dd"); 
-          // console.log(time2);
-        };
-        var graphOptions = {
-          "title": "CURRENT HASHRATE",
-          "xaxis": { 
-            "title": "A SLICE OF TIME"
-          },
-          "yaxis": { 
-            "title": "HASHRATE"
-          }
-        };
-        var data = [
-          {
-
-            // type: "scatter",
-            // mode: "lines",
-            
-            x: xArray,
-            
-            y: yArray,
-
-
-             }];
-             
-</div>
-
-
-        // console.log(xArray);
-        console.log(response.data);
-        //  console.log(time);
-        Plotly.newPlot('myDiv', data, graphOptions);
-        */
   </script>
                     </div>
                 </div>
