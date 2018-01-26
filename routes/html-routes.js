@@ -13,9 +13,17 @@ module.exports = function(app) {
         title: "title"
       });
   });
+  
   app.get("/history", function(req, res){
     res.render("history",{
       title: "title"
+    });
+  });
+
+  app.get("/history/:minerId", function(req,res){
+    const param = req.params.minerid;
+    res.render("history", {
+      title: "history"
     });
   });
 
@@ -23,14 +31,6 @@ module.exports = function(app) {
     res.render("developers",{
       title: "title"
     });    
-  });
-  //I dont know what this fucction does
-  app.get('/history/:minerId', function(req, res, next) {
-    var minerId = request.params.username;
-    findUserByUsername(username, function(error, user) {
-      if (error) return next(error);
-      return response.render('user', user);
-    });
   });
   
   //getting route

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     window.onload = function() { 
     var miner = ""  
     var queryURL= "https://api.ethermine.org/poolStats";
@@ -26,9 +25,7 @@ $(document).ready(function() {
                 // $("#top-miners").append(response.data.minedBlocks[i].miner + "<br>");
                 console.log(response.data.minedBlocks[i].miner);
                 $("#top-miners").append(minerbutton);
-
             }
-            
         });     
     }
 });
