@@ -1,7 +1,19 @@
 #last-box {
-    background-color: red;
+    background-color:rgb(230, 174, 216);
+}
+
+#second {
+    background-color: rgb(245, 117, 117);
+}
+
+#word {
+    font-size: 20px;
 }
 
 .panel{
     box-shadow: 2px 2px 2px;
+}
+
+body{
+    background-image: black;
 }
