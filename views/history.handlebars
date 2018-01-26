@@ -114,6 +114,7 @@
                 <div class="panel panel-primary">
                     <div id="graph">
                         <script>
+
         var miner = localStorage.getItem("minerId");  
         var queryURL= "https://api.ethermine.org/miner/" + miner + "/history";
         $.ajax({
@@ -179,15 +180,9 @@
                   title: 'Hashrate'
                 }
               };
-             
-              // console.log(xArray);
-           //    console.log(response.data);
-              //  console.log(time);
               Plotly.newPlot('graph', data, layout);
             });
-                        </script>
-                    
-   
-                    </div>
-                </div>
+        </script>
+            </div>
         </div>
+</div>
