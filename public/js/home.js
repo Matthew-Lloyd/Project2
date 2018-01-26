@@ -7,9 +7,9 @@ $(document).ready(function() {
         // minerid = minerid.replace(/\s+/g, "").toLowerCase();
         // run an AJAX GET-request for our servers api,
         // including the user's character in the url
-        $.get("/history/7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc", function (data) {
-        
-        });
+        // $.get("/history/" + minerId, function (data) {
+        window.location = "/history/" + minerId;
+        // });
     });
     window.onload = function() { 
         var miner = ""  
@@ -59,15 +59,17 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
+        // console.log(response);
         console.log(response[0].createdAt);
         var xArray = [];
         var yArray = [];
         var yArray2 = [];
         var yArray3 = [];
-        for (var i = 0; i < 100; i++) {
-            var time = (response[i].createdAt);
-            yArray.push(response[i].Hashrate / 1000000);
+        for (var i = 0; i < response.length; i++) {
+            console.log(response[i]);
+            var time = new Date(response[i].createdAt);
+            // console.log(time);
+            yArray.push(response[i].hashRate);
             xArray.push(time);
             // yArray2.push(response[i].averageHashrate / 1000000);
             // yArray3.push(response[i].reportedHashrate / 1000000);
@@ -75,6 +77,7 @@ $(document).ready(function() {
             // time2.toString("MMM dd"); 
             // console.log(time2);
         };
+        console.log(yArray);
         var trace1 = {
             x: xArray,
             y: yArray,
@@ -97,8 +100,8 @@ $(document).ready(function() {
         ];
         var layout = {
             title: 'Line plot of hashrates',
-            paper_bgcolor: 'rgb(255, 255, 255)',
-            plot_bgcolor: 'rgb(0, 0, 0)',
+            // paper_bgcolor: 'rgb(255, 255, 255)',
+            // plot_bgcolor: 'rgb(0, 0, 0)',
             xaxis: {
                 title: 'Date'
             },
