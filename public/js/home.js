@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    // function databasePush() {
-    // }
     $("#minerHist").on("click", function () {
         var minerId = "7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc";
         // minerid = minerid.replace(/\s+/g, "").toLowerCase();
@@ -11,6 +9,7 @@ $(document).ready(function() {
         
         });
     });
+
     window.onload = function() { 
         var miner = ""  
         var queryURL= "https://api.ethermine.org/poolStats";
@@ -28,26 +27,22 @@ $(document).ready(function() {
             $("#price").append("btc:฿" + response.data.price.btc +  " usd: $" + response.data.price.usd);
             $("#last").append(response.data.minedBlocks[0].number);
             $("#top-miners").append(response.data.minedBlocks[0].miners);
-
-            for(var i = 0; i< response.data.minedBlocks.length; i++){
-                    $("#top-miners").append(" miner: " + response.data.minedBlocks[i].miner  + "<br>")
-                    // console.log(response.data.minedBlocks[i])
-                }
-            // $.ajax({
-            //     url: "api/Pool",
-            //     method: "POST",
-            //     data: response
-            // });
-        });
-
-        for(var i = 0; i< response.data.minedBlocks.length; i++){
+            $.ajax({
+                url: "api/Pool",
+                method: "POST",
+                data: response
+            });
+            for (var i = 0; i < response.data.minedBlocks.length; i++) {
                 var minerbutton = $("<button>");
-                minerbutton.addClass("btn btn-danger");
+                minerbutton.addClass("btn btn-danger minerBtn");
                 minerbutton.attr("data-id", response.data.minedBlocks[i].miner);
+                minerbutton.css({ "background-color": "darkgrey", "shadow": "black" });
                 minerbutton.text(response.data.minedBlocks[i].miner);
                 // $("#top-miners").append(response.data.minedBlocks[i].miner + "<br>");
                 console.log(response.data.minedBlocks[i].miner);
                 $("#top-miners").append(minerbutton);
+            }
+        });
 
         $.ajax({
             method: "GET",
@@ -57,9 +52,13 @@ $(document).ready(function() {
             // console.log("Pool History: " + response[i].id);
             }
         })
-        // .then(populate);  
-
-    }
+    };
+    $(document).on("click", '.minerBtn', function () {
+        var minerId = $(this).attr("data-id");
+        console.log(minerId)
+        localStorage.setItem("minerId", minerId);
+        window.location = "/history/" + minerId;
+    });    
    //graph from branch Jonathan
    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
    // var moment = require('moment'); //including moJment.js in this script (questionable)
@@ -68,15 +67,17 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
     }).done(function (response) {
-        console.log(response);
+        // console.log(response);
         console.log(response[0].createdAt);
         var xArray = [];
         var yArray = [];
         var yArray2 = [];
         var yArray3 = [];
-        for (var i = 0; i < 100; i++) {
-            var time = (response[i].createdAt);
-            yArray.push(response[i].Hashrate / 1000000);
+        for (var i = 0; i < response.length; i++) {
+            console.log(response[i]);
+            var time = new Date(response[i].createdAt);
+            // console.log(time);
+            yArray.push(response[i].hashRate);
             xArray.push(time);
             // yArray2.push(response[i].averageHashrate / 1000000);
             // yArray3.push(response[i].reportedHashrate / 1000000);
@@ -84,6 +85,7 @@ $(document).ready(function() {
             // time2.toString("MMM dd"); 
             // console.log(time2);
         };
+        console.log(yArray);
         var trace1 = {
             x: xArray,
             y: yArray,
@@ -106,8 +108,8 @@ $(document).ready(function() {
         ];
         var layout = {
             title: 'Line plot of hashrates',
-            paper_bgcolor: 'rgb(255, 255, 255)',
-            plot_bgcolor: 'rgb(0, 0, 0)',
+            // paper_bgcolor: 'rgb(255, 255, 255)',
+            // plot_bgcolor: 'rgb(0, 0, 0)',
             xaxis: {
                 title: 'Date'
             },
@@ -120,5 +122,5 @@ $(document).ready(function() {
         //console.log(response.data);
         //console.log(time);
         Plotly.newPlot('graph', data, layout);
-    });    
+    });
 });

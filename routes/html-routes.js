@@ -11,27 +11,16 @@ module.exports = function(app) {
         title: "title"
       });
   });
-  app.get("/history", function(req, res){
-    res.render("history",{
-      title: "title"
-  //each app.get is to send to another path
-  // app.get("/", function(req, res) {
-  //     res.sendFile());
-  // });
-  // app.get("/history:minerid", function(req, res){
-  //   return res.render("history",{
-  //     title: "history",
-  //   });
-  // });
-
-  app.get("/history", function (req, res) {
-    // var minerid = req.params.minerid;
-    res.render('history', {title:"history"});
-  });
-
   app.get("/history/:minerId", function (req, res) {
     const params = req.params.minerid;
-    return res.render('history',{
+    res.render('history',{
+      title: "history"
+    });
+  });
+
+  app.get("/history/:minerId", function(req,res){
+    const param = req.params.minerid;
+    res.render("history", {
       title: "history"
     });
   });
@@ -41,15 +30,6 @@ module.exports = function(app) {
       title: "title"
     });    
   });
-  //I dont know what this fucction does
-  app.get('/history/:minerId', function(req, res, next) {
-    var minerId = request.params.username;
-    findUserByUsername(username, function(error, user) {
-      if (error) return next(error);
-      return response.render('user', user);
-    });
-  });
-  
   //getting route
   // app.get("/history:minerid", function(req, res) {
   //   var condition = "id = " + req.params.id;
@@ -64,13 +44,9 @@ module.exports = function(app) {
   //   });
   // });
 
-};//ending of exports  
+  //ending of exports  
 
-      title: "developers"
-    });
-});
   // If no matching route is found default to home
   // app.get("*", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/home.html"));
-  // });
-};
+  };
