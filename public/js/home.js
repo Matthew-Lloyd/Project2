@@ -1,7 +1,15 @@
 $(document).ready(function() {
 
-    // function databasePush() {
-    // }
+    $("#minerHist").on("click", function () {
+        var minerId = "7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc";
+        // minerid = minerid.replace(/\s+/g, "").toLowerCase();
+        // run an AJAX GET-request for our servers api,
+        // including the user's character in the url
+        $.get("/history/7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc", function (data) {
+        
+        });
+    });
+
     window.onload = function() { 
         var miner = ""  
         var queryURL= "https://api.ethermine.org/poolStats";
@@ -35,6 +43,7 @@ $(document).ready(function() {
                 $("#top-miners").append(minerbutton);
             }
         });
+
         $.ajax({
             method: "GET",
             url: "api/Pool"

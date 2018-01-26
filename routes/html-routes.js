@@ -18,6 +18,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/history/:minerId", function(req,res){
+    const param = req.params.minerid;
+    res.render("history", {
+      title: "history"
+    });
+  });
+
   app.get("/developers", function(req, res){
     res.render("developers",{
       title: "title"
