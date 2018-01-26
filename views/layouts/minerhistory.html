@@ -22,6 +22,7 @@ plotly.plot(data,graphOptions,function() {
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -49,18 +50,23 @@ plotly.plot(data,graphOptions,function() {
           var time = new Date(response.data[i].time * 1000);
           console.log(time);
           yArray.push(response.data[i].currentHashrate / 1000000);
+          
           // xArray.push(time);
 
           xArray.push(time);
           console.log(xArray);
           console.log(yArray);
 
-          // var time2 = new Date(1516737600);
-          // time2.toString("MMM dd"); 
-          // console.log(time2);
+       
         };
         var graphOptions = {
           "title": "CURRENT HASHRATE",
+          // "autosize": "true",
+          // "legend":{
+          "showlegend": true,
+          "legend": {"name":"hashrate",
+          },// },
+
           "xaxis": { 
             "title": "A SLICE OF TIME"
           },
@@ -74,16 +80,12 @@ plotly.plot(data,graphOptions,function() {
             // type: "scatter",
             // mode: "lines",
             
-            x: xArray,
-            
+            x: xArray,          
             y: yArray,
 
 
           }];
 
-
-
-        // console.log(xArray);
         console.log(response.data);
         //  console.log(time);
         Plotly.newPlot('myDiv', data, graphOptions);
