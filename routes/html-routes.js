@@ -17,23 +17,28 @@ module.exports = function(app) {
   // app.get("/", function(req, res) {
   //     res.sendFile());
   // });
-  app.get("/history", function(req, res){
-    res.render("history",{
-      title: "title"
+  // app.get("/history:minerid", function(req, res){
+  //   return res.render("history",{
+  //     title: "history",
+  //   });
+  // });
+
+  // app.get("history/:minerId", function (req, res) {
+  //   var minerid = req.params.minerid;
+  //   res.render('history', {title:"history"});
+  // });
+  app.get("/history/7Fb21ac4Cd75d9De3E1c5D11D87bB904c01880fc", function (req, res) {
+    // var minerid = req.params.minerid;
+    res.render('history',{
+      title: "history"
     });
   });
+
   app.get("/developers", function(req, res){
     res.render("developers",{
-      title: "title"
+      title: "developers"
     });
 });
-
-// testing graph route
-  app.get("/minerhistory", function(req, res) {
-     res.sendFile(path.join(__dirname, "../views/minerhistory.html"));
-   });
-
-
   // If no matching route is found default to home
   // app.get("*", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/home.html"));

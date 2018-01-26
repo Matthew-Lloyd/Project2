@@ -14,11 +14,9 @@
     <!-- Navbar content -->
 
     <span class="navbar-toggler-icon"></span>
-    </button>
         <a class="navbar-brand" href="/" style="background-color:rgb(8, 8, 8);">Home</a>
         <a class="navbar-brand" href="/history" style="background-color:rgb(8, 8, 8);">History</a>
         <a class="navbar-brand" href="/developers" style="background-color:rgb(8, 8, 8);">Developers</a>
-
     <div class="collapse navbar-collapse" id="navbarText">
 
         
@@ -28,7 +26,7 @@
      
     <div class="row container-fluid">
         <div class="col-lg-12">
-            <h1 class="page-header">Home</h1>
+            <h1 class="page-header">Home <button id="minerHist">History</button></h1>
         </div>
     </div>
 
@@ -183,7 +181,8 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <div id="top-miners"><span class="pull-left"></span></div>
+                                <div id="top-miners">
+                                <span class="pull-left"></span></div>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -195,143 +194,7 @@
     <div class="col-lg-8">
         <div class="panel panel-primary">
             <div id="graph">
-                <script>
-   //graph from branch Jonathan
-   // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
-   // var moment = require('moment'); //including moJment.js in this script (questionable)
-   var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
-
-   $.ajax({
-     url: queryURL,
-     method: "GET"
-   })
-     .done(function (response) {
-       console.log(response);
-       var xArray = [];
-       var yArray = [];
-       var yArray2 = [];
-       var yArray3 = [];
-       for (var i = 0; i < 100; i++) {
-
-         // console.log(data);
-        
-         var time = new Date(response.data[i].time * 1000);
-         console.log(time);
-         yArray.push(response.data[i].currentHashrate / 1000000);
-         // xArray.push(time);
-         xArray.push(time);
-         yArray2.push(response.data[i].averageHashrate / 1000000);
-         yArray3.push(response.data[i].reportedHashrate / 1000000);
-         console.log(xArray);
-         console.log(yArray);
-         console.log(yArray2);
-         console.log(yArray3);
-         // var time2 = new Date(1516737600);
-         // time2.toString("MMM dd"); 
-         // console.log(time2);
-       };
-       var trace1 = {
-         x: xArray,
-         y: yArray,
-         name: 'current'
-       }
-
-       var trace2 = {
-         x: xArray,
-         y: yArray2,
-         name: 'average'
-       }
-
-       var trace3 = {
-         x: xArray,
-         y: yArray3,
-         name: 'recorded'
-       }
-
-       var data = [
-         trace1, 
-         trace2, 
-         trace3,
-      ];
-
-       var layout = {
-         title: 'Line plot of hashrates',
-         paper_bgcolor: 'rgb(255, 223, 0)',
-         plot_bgcolor: 'rgb(255, 255, 255)',
-         xaxis: {
-           title: 'Date'
-         },
-         yaxis: {
-           title: 'Hashrate'
-         }
-       };
-      
-       // console.log(xArray);
-       console.log(response.data);
-       //  console.log(time);
-       Plotly.newPlot('graph', data, layout);
-     });
-     //graph from branch Tim
-  /*<script>
-    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
-    // var moment = require('moment'); //including moment.js in this script (questionable)
-    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      .done(function (response) {
-        var xArray = [];
-        var yArray = [];
-        
-        for (var i = 0; i < 100; i++) {
-
-          // console.log(data);
-         
-          var time = new Date(response.data[i].time * 1000);
-          console.log(time);
-          yArray.push(response.data[i].currentHashrate / 1000000);
-          // xArray.push(time);
-
-          xArray.push(time);
-          console.log(xArray);
-          console.log(yArray);
-
-          // var time2 = new Date(1516737600);
-          // time2.toString("MMM dd"); 
-          // console.log(time2);
-        };
-        var graphOptions = {
-          "title": "CURRENT HASHRATE",
-          "xaxis": { 
-            "title": "A SLICE OF TIME"
-          },
-          "yaxis": { 
-            "title": "HASHRATE"
-          }
-        };
-        var data = [
-          {
-
-            // type: "scatter",
-            // mode: "lines",
-            
-            x: xArray,
-            
-            y: yArray,
-
-
-             }];
-             
-
-
-        // console.log(xArray);
-        console.log(response.data);
-        //  console.log(time);
-        Plotly.newPlot('myDiv', data, graphOptions);
-        */
-  </script>
+                
             </div>
         </div>
     </div>
