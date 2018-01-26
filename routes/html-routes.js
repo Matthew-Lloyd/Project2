@@ -1,5 +1,3 @@
-//html routes to home Page
-//has to create the correct path to link to the html file
 var path = require("path");
 //=======================================
 
@@ -16,6 +14,25 @@ module.exports = function(app) {
   app.get("/history", function(req, res){
     res.render("history",{
       title: "title"
+  //each app.get is to send to another path
+  // app.get("/", function(req, res) {
+  //     res.sendFile());
+  // });
+  // app.get("/history:minerid", function(req, res){
+  //   return res.render("history",{
+  //     title: "history",
+  //   });
+  // });
+
+  app.get("/history", function (req, res) {
+    // var minerid = req.params.minerid;
+    res.render('history', {title:"history"});
+  });
+
+  app.get("/history/:minerId", function (req, res) {
+    const params = req.params.minerid;
+    return res.render('history',{
+      title: "history"
     });
   });
 
@@ -49,4 +66,11 @@ module.exports = function(app) {
 
 };//ending of exports  
 
-
+      title: "developers"
+    });
+});
+  // If no matching route is found default to home
+  // app.get("*", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/home.html"));
+  // });
+};
