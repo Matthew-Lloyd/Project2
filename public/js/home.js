@@ -1,4 +1,6 @@
 $(document).ready(function() {
+<<<<<<< HEAD
+=======
 
     // function databasePush() {
     // }
@@ -11,6 +13,7 @@ $(document).ready(function() {
         
         });
     });
+>>>>>>> 2978c67f4c025a60efa21514be358691cd031493
     window.onload = function() { 
         var miner = ""  
         var queryURL= "https://api.ethermine.org/poolStats";
@@ -48,6 +51,10 @@ $(document).ready(function() {
                 // $("#top-miners").append(response.data.minedBlocks[i].miner + "<br>");
                 console.log(response.data.minedBlocks[i].miner);
                 $("#top-miners").append(minerbutton);
+<<<<<<< HEAD
+            }
+        });     
+=======
 
         $.ajax({
             method: "GET",
@@ -59,6 +66,7 @@ $(document).ready(function() {
         })
         // .then(populate);  
 
+>>>>>>> 2978c67f4c025a60efa21514be358691cd031493
     }
    //graph from branch Jonathan
    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
