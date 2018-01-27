@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test Graph</title>
+
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+</head>
+
+<body>
+
+  <div id="myDiv">
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+  <script>
+    //graph from branch Jonathan
+    // var paramminername111 = 7ba7CE9161638c1227c32CD6326eb040571D99c6;
+    // var moment = require('moment'); //including moJment.js in this script (questionable)
+    var queryURL = "https://api.ethermine.org/miner/7ba7CE9161638c1227c32CD6326eb040571D99c6/history";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .done(function (response) {
+        //  console.log(response);
+        var xArray = [];
+        var yArray = [];
+        var yArray2 = [];
+        var yArray3 = [];
+        for (var i = 0; i < 100; i++) {
+          var time = new Date(response.data[i].time * 1000);
+          yArray.push(response.data[i].currentHashrate / 1000000);
+          // xArray.push(time);
+          xArray.push(time);
+          yArray2.push(response.data[i].averageHashrate / 1000000);
+          yArray3.push(response.data[i].reportedHashrate / 1000000);
+          var trace1 = {
+            x: xArray,
+            y: yArray,
+            name: 'CURRENT'
+          };
+          var trace2 = {
+            x: xArray,
+            y: yArray2,
+            name: 'AVERAGE'
+          };
+          var trace3 = {
+            x: xArray,
+            y: yArray3,
+            name: 'RECORDED'
+          };
+          var layout = {
+            title: 'DYNAMIC CHART OF HASHRATES',
+            "titlefont": {
+              "size": 36,
+              "color": 'black'
+            },
+            paper_bgcolor: 'rgb(135, 219, 217)',
+            plot_bgcolor: 'rgb(207, 239, 236)',
+            xaxis: {
+              title: 'SLICE OF TIME SEGMENT',
+              "titlefont": {
+                "size": 20,
+                "color": 'black'
+              },
+              linecolor: 'black',
+              linewidth: 5,
+              mirror: true,
+              type: "date",
+              showgrid: true,
+              zeroline: true,
+              showline: true,
+              mirror: 'ticks',
+              gridcolor: '#bdbdbd',
+              gridwidth: 2,
+              zerolinecolor: '#969696',
+              zerolinewidth: 4,
+              linecolor: '#636363',
+              linewidth: 6
+            },
+            yaxis: {
+              title: 'HASHRATES',
+              "titlefont": {
+                "size": 20,
+                "color": 'black'
+              },
+              linecolor: 'black',
+              linewidth: 5,
+              mirror: true
+            },
+          };
+          var data = [
+            trace1,
+            trace2,
+            trace3
+          ];
+        };
+        Plotly.newPlot('myDiv', data, layout);
+      });
+  </script>
+</body>
+
+</html>
