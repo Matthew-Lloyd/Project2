@@ -16,6 +16,9 @@ $(document).ready(function() {
             $("#hash-rates").append(response.data[143].averageHashrate);
             $("#stale-shares").append(response.data[143].staleShares);
             console.log(response.data[143]); 
-        });
+            
+          
+        });//ending of first ajax calls
+       
     };
 });
